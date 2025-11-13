@@ -1,2 +1,186 @@
-# QuestionnaireComm-Colab
-Site questionnaire comm' collaborative
+<style>
+    /*
+    ==================================================
+    CSS (STYLE AMÉLIORÉ)
+    ==================================================
+    */
+    :root {
+        --mcdo-red: #c00;
+        --mcdo-yellow: #ffc72c;
+        --text-color: #333;
+        --bg-light: #f4f4f4;
+        --bg-white: #ffffff;
+    }
+
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background-color: var(--mcdo-yellow); /* Fond jaune pour capter l'attention */
+        color: var(--text-color);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        background-color: var(--bg-white);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+        max-width: 700px;
+        width: 100%;
+        border-top: 5px solid var(--mcdo-red); /* Bordure rouge McDo */
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    header h1 {
+        color: var(--mcdo-red);
+        font-size: 2.5em;
+        margin-bottom: 5px;
+        font-weight: 900;
+    }
+
+    header p {
+        color: #666;
+        font-size: 1.1em;
+    }
+
+    /* Style pour les groupes de questions */
+    .question-group {
+        margin-bottom: 30px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: var(--bg-light);
+    }
+
+    .question-group h3 {
+        margin-top: 0;
+        color: var(--mcdo-red);
+        font-size: 1.3em;
+        border-bottom: 2px solid var(--mcdo-yellow);
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+    }
+
+    /* Styles des options radio/checkbox */
+    label {
+        display: flex; /* Alignement */
+        align-items: center;
+        margin: 12px 0;
+        padding: 10px;
+        border-radius: 6px;
+        transition: background-color 0.2s;
+        cursor: pointer;
+    }
+
+    label:hover {
+        background-color: #ffe899; /* Survol des options */
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+        appearance: none; /* Cache le style natif */
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--mcdo-red);
+        border-radius: 50%; /* Pour les radios */
+        margin-right: 15px;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+    }
+
+    input[type="radio"]::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em var(--mcdo-red);
+    }
+
+    input[type="radio"]:checked::before {
+        transform: scale(1);
+    }
+
+    /* Style du range slider */
+    input[type="range"] {
+        width: 100%;
+        margin-top: 15px;
+        /* Ajout de styles pour une meilleure visibilité du curseur */
+    }
+
+    .range-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        font-size: 0.9em;
+        color: #666;
+        font-weight: bold;
+    }
+
+    /* Styles des champs de texte et nombre */
+    input[type="number"], input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: calc(100% - 22px);
+        margin-top: 5px;
+    }
+
+    /* Styles du bouton de soumission */
+    button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: var(--mcdo-red);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.1s;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background-color: #a00;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Style pour les résultats (Post-soumission) */
+    #results {
+        margin-top: 30px;
+        padding: 25px;
+        border: 2px solid var(--mcdo-red);
+        background-color: #fff9e6; /* Jaune très clair */
+        border-radius: 10px;
+        display: none;
+        text-align: center;
+    }
+
+    #results h2 {
+        color: #008000; /* Vert pour la validation */
+    }
+    
+    #results p {
+        font-size: 1.1em;
+        margin: 10px 0;
+        text-align: left;
+    }
+    
+    .note {
+        font-style: italic;
+        font-size: 0.9em;
+        color: #999;
+    }
+</style>
