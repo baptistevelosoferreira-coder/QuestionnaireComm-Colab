@@ -253,18 +253,18 @@
             <label><input type="radio" name="age" value="18_24"> 18-24 ans</label>
             <label><input type="radio" name="age" value="25_34"> 25-34 ans</label>
             <label><input type="radio" name="age" value="35_44"> 35-44 ans</label>
-            <label><input type="radio" name="age" value="45_plus"> 45 ans et plus</label>
+            <label><input type="radio" name="age" value="45_plus"> 45 ans et plus</label> [cite: 3]
 
             <h4>Quelle est votre situation actuelle ?</h4>
             <label><input type="radio" name="situation" value="etudiant" required> Étudiant</label>
             <label><input type="radio" name="situation" value="salarie"> Salarié</label>
             <label><input type="radio" name="situation" value="independant"> Indépendant</label>
             <label><input type="radio" name="situation" value="sans_emploi"> Sans emploi</label>
-            <label>Autre : <input type="text" name="situation_autre" placeholder="Précisez"></label>
+            <label>Autre : <input type="text" name="situation_autre" placeholder="Précisez"></label> [cite: 4]
             
             <h4>Dans quelle zone géographique résidez-vous ?</h4>
             <label><input type="radio" name="zone" value="urbaine" required> Zone urbaine</label>
-            <label><input type="radio" name="zone" value="rurale"> Zone rurale / périurbaine</label>
+            <label><input type="radio" name="zone" value="rurale"> Zone rurale / périurbaine</label> [cite: 5]
         </div>
 
         <div class="question-group">
@@ -275,20 +275,20 @@
             <label><input type="radio" name="frequence" value="une_par_semaine"> Environ une fois par semaine</label>
             <label><input type="radio" name="frequence" value="1_a_3_par_mois"> 1 à 3 fois par mois</label>
             <label><input type="radio" name="frequence" value="moins_une_par_mois"> Moins d’une fois par mois</label>
-            <label><input type="radio" name="frequence" value="jamais"> Jamais</label>
+            <label><input type="radio" name="frequence" value="jamais"> Jamais</label> [cite: 7]
 
             <h4>Quelle est votre dépense moyenne lors d’une visite chez McDonald’s ?</h4>
             <label><input type="radio" name="depense" value="moins_8" required> Moins de 8 €</label>
             <label><input type="radio" name="depense" value="8_12"> 8 à 12 €</label>
             <label><input type="radio" name="depense" value="13_17"> 13 à 17 €</label>
-            <label><input type="radio" name="depense" value="plus_17"> Plus de 17 €</label>
+            <label><input type="radio" name="depense" value="plus_17"> Plus de 17 €</label> [cite: 8]
 
             <h4>À quel moment de la journée allez-vous le plus souvent chez McDonald’s ?</h4>
             <label><input type="radio" name="moment" value="midi" required> Le midi</label>
             <label><input type="radio" name="moment" value="soir"> Le soir</label>
             <label><input type="radio" name="moment" value="fin_soiree"> En fin de soirée</label>
             <label><input type="radio" name="moment" value="week_end"> En week-end</label>
-            <label>Autre : <input type="text" name="moment_autre" placeholder="Précisez"></label>
+            <label>Autre : <input type="text" name="moment_autre" placeholder="Précisez"></label> [cite: 9]
             
             <h4>Quelles sont vos motivations lorsque vous allez chez McDonald’s ?</h4>
             <label><input type="checkbox" name="motivation" value="prix"> Prix abordable</label>
@@ -296,13 +296,13 @@
             <label><input type="checkbox" name="motivation" value="gout"> Goût / plaisir</label>
             <label><input type="checkbox" name="motivation" value="habitude"> Habitude</label>
             <label><input type="checkbox" name="motivation" value="accessibilite"> Accessibilité (proximité)</label>
-            <label>Autre : <input type="text" name="motivation_autre" placeholder="Précisez"></label>
+            <label>Autre : <input type="text" name="motivation_autre" placeholder="Précisez"></label> [cite: 10]
             
             <h4>Lorsque vous consommez chez McDonald’s, préférez-vous :</h4>
             <label><input type="radio" name="conso_pref" value="sur_place" required> Manger sur place</label>
             <label><input type="radio" name="conso_pref" value="emporter"> Prendre à emporter</label>
             <label><input type="radio" name="conso_pref" value="drive"> Utiliser le drive</label>
-            <label><input type="radio" name="conso_pref" value="appli"> Commander via l’application</label>
+            <label><input type="radio" name="conso_pref" value="appli"> Commander via l’application</label> [cite: 11]
         </div>
 
         <div class="question-group">
@@ -312,29 +312,29 @@
             <label><input type="radio" name="prix_augmente" value="oui_bcp" required> Oui, beaucoup</label>
             <label><input type="radio" name="prix_augmente" value="oui_un_peu"> Oui, un peu</label>
             <label><input type="radio" name="prix_augmente" value="non"> Non, pas vraiment</label>
-            <label><input type="radio" name="prix_augmente" value="sais_pas"> Je ne sais pas</label>
+            <label><input type="radio" name="prix_augmente" value="sais_pas"> Je ne sais pas</label> [cite: 13]
 
             <h4>Trouvez-vous que le rapport qualité/prix chez McDonald’s est :</h4>
             <label><input type="radio" name="qualite_prix" value="excellent" required> Excellent</label>
             <label><input type="radio" name="qualite_prix" value="bon"> Bon</label>
             <label><input type="radio" name="qualite_prix" value="moyen"> Moyen</label>
-            <label><input type="radio" name="qualite_prix" value="mauvais"> Mauvais</label>
+            <label><input type="radio" name="qualite_prix" value="mauvais"> Mauvais</label> [cite: 14]
 
             <h4>Utilisez-vous l’application McDo+ pour commander ou profiter d’offres ?</h4>
             <label><input type="radio" name="appli_mcdo" value="regulierement" required> Oui, régulièrement</label>
             <label><input type="radio" name="appli_mcdo" value="temps_en_temps"> Oui, de temps en temps</label>
-            <label><input type="radio" name="appli_mcdo" value="jamais"> Non, jamais</label>
+            <label><input type="radio" name="appli_mcdo" value="jamais"> Non, jamais</label> [cite: 15]
 
             <h4>Êtes-vous fidèle à McDonald’s (par rapport aux autres fast-foods) ?</h4>
             <label><input type="radio" name="fidelite" value="exclusivement" required> Oui, exclusivement</label>
             <label><input type="radio" name="fidelite" value="aussi_ailleurs"> Oui, mais j’y vais aussi ailleurs</label>
-            <label><input type="radio" name="fidelite" value="varie"> Non, je varie souvent</label>
+            <label><input type="radio" name="fidelite" value="varie"> Non, je varie souvent</label> [cite: 16]
 
             <h4>Pensez-vous que McDonald’s propose une offre adaptée aux attentes actuelles (qualité, diversité, prix) ?</h4>
             <label><input type="radio" name="offre_adaptee" value="tout_a_fait" required> Oui tout à fait</label>
             <label><input type="radio" name="offre_adaptee" value="plutot_oui"> Plutôt oui</label>
             <label><input type="radio" name="offre_adaptee" value="plutot_non"> Plutôt non</label>
-            <label><input type="radio" name="offre_adaptee" value="pas_du_tout"> Pas du tout</label>
+            <label><input type="radio" name="offre_adaptee" value="pas_du_tout"> Pas du tout</label> [cite: 17]
         </div>
         
         <div class="question-group">
@@ -346,7 +346,7 @@
             </label>
             <label>
                 <input type="radio" name="achat_wonka" value="non_wonka"> Non
-            </label>
+            </label> [cite: 19]
 
             <h4>Seriez-vous prêt à acheter la tablette de chocolat **McDo seule** ?</h4>
             <label>
@@ -354,12 +354,12 @@
             </label>
             <label>
                 <input type="radio" name="achat_seul" value="non_seul"> Non
-            </label>
+            </label> [cite: 22]
 
             <h4>À quel prix seriez-vous prêt à acheter ce produit (supposé inclus dans un menu) ?</h4>
             <label><input type="radio" name="price" value="menu_plus_2" required> Prix du menu + 2 €</label>
             <label><input type="radio" name="price" value="menu_plus_3"> Prix du menu + 3 €</label>
-            <label><input type="radio" name="price" value="menu_plus_4"> Prix du menu + 4 €</label>
+            <label><input type="radio" name="price" value="menu_plus_4"> Prix du menu + 4 €</label> [cite: 25, 26, 27, 28]
 
         </div>
 
@@ -369,4 +369,97 @@
     <div id="results">
         <h2>✅ Vos Réponses (Simulation)</h2>
         <p><strong>Âge :</strong> <span id="res_age"></span></p>
-        <p>
+        <p><strong>Dépense moyenne :</strong> <span id="res_depense"></span></p>
+        <p><strong>Achat Wonka :</strong> <span id="res_achat_wonka"></span></p>
+        <p><strong>Achat Seul :</strong> <span id="res_achat_seul"></span></p>
+        <p><strong>Prix Suggéré :</strong> <span id="res_price"></span></p>
+        <p class="note">**NOTE IMPORTANTE :** Dans une campagne réelle, ces données seraient envoyées à une base de données (via un service backend) et non affichées ici.</p>
+    </div>
+
+</div>
+
+<script>
+    /*
+    ==================================================
+    JAVASCRIPT (LOGIQUE)
+    ==================================================
+    */
+    document.getElementById('marketingSurvey').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        
+        // Fonction pour récupérer la valeur d'un radio group
+        const getRadioValue = (name) => {
+            const radio = form.querySelector(`input[name="${name}"]:checked`);
+            return radio ? radio.value : 'Non renseigné';
+        };
+
+        // Récupération des valeurs
+        const age = getRadioValue('age');
+        const situation = getRadioValue('situation');
+        const zone = getRadioValue('zone');
+        const frequence = getRadioValue('frequence');
+        const depense = getRadioValue('depense');
+        const moment = getRadioValue('moment');
+        const conso_pref = getRadioValue('conso_pref');
+        const prix_augmente = getRadioValue('prix_augmente');
+        const qualite_prix = getRadioValue('qualite_prix');
+        const appli_mcdo = getRadioValue('appli_mcdo');
+        const fidelite = getRadioValue('fidelite');
+        const offre_adaptee = getRadioValue('offre_adaptee');
+        const achat_wonka = getRadioValue('achat_wonka');
+        const achat_seul = getRadioValue('achat_seul');
+        const price = getRadioValue('price');
+        
+        // Récupération des motivations (checkboxes)
+        const motivations = Array.from(form.querySelectorAll('input[name="motivation"]:checked')).map(cb => cb.value);
+
+        // Validation simple
+        if (!age || !frequence || !achat_wonka || !achat_seul || !price) {
+            alert("Veuillez répondre à toutes les questions principales pour continuer.");
+            return;
+        }
+
+        // --- SIMULATION DE L'ENVOI DES DONNÉES ---
+        // Dans une application réelle, TOUTES les données ci-dessous seraient envoyées au service (Formspree, etc.)
+        const data = {
+            age: age,
+            situation: situation,
+            zone: zone,
+            frequence: frequence,
+            depense: depense,
+            moment: moment,
+            motivations: motivations.join(', '), // Stocke les motivations séparées par une virgule
+            conso_pref: conso_pref,
+            prix_augmente: prix_augmente,
+            qualite_prix: qualite_prix,
+            appli_mcdo: appli_mcdo,
+            fidelite: fidelite,
+            offre_adaptee: offre_adaptee,
+            achat_wonka: achat_wonka,
+            achat_seul: achat_seul,
+            price: price
+        };
+        
+        console.log("Données complètes à envoyer :", data);
+
+
+        // --- AFFICHAGE DES RÉSULTATS (Simulation) ---
+        // Ceci est juste pour vous montrer que les données sont capturées.
+
+        document.getElementById('res_age').innerText = age;
+        document.getElementById('res_depense').innerText = depense + ' €';
+        document.getElementById('res_achat_wonka').innerText = achat_wonka === 'oui_wonka' ? 'Oui' : 'Non';
+        document.getElementById('res_achat_seul').innerText = achat_seul === 'oui_seul' ? 'Oui' : 'Non';
+        document.getElementById('res_price').innerText = price;
+        
+        document.getElementById('marketingSurvey').style.display = 'none'; 
+        document.getElementById('results').style.display = 'block'; 
+        
+        alert("Merci pour votre participation !");
+    });
+</script>
+
+</body>
+</html>
