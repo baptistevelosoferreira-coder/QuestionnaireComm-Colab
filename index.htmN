@@ -10,7 +10,7 @@
     <style>
         /*
         ==================================================
-        CSS (STYLE MCDO THÉMATIQUE)
+        CSS (STYLE MCDO THÉMATIQUE SANS RACINES)
         ==================================================
         */
         :root {
@@ -83,8 +83,10 @@
             color: var(--sapin-green);
             font-size: 1.6em;
             font-weight: 500;
-            border-left: 4px solid var(--accent-gold);
-            padding-left: 10px;
+            /* Lignes modifiées pour supprimer la barre verticale (racine) */
+            border-left: none; 
+            padding-left: 0;
+            
             margin-bottom: 20px;
         }
 
@@ -110,7 +112,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
         
-        /* Styles des autres éléments (non modifiés, mais gardés pour la cohérence) */
+        /* Styles des autres éléments */
         label {
             display: flex;
             align-items: center;
@@ -389,14 +391,14 @@
     // Définition des deux versions de l'A/B test
     const abTestVersions = {
         'A': {
-            title: "Question A : Comment percevez-vous cette première offre (McDo X Wonka) ?",
-            imageSrc: "Gemini_Generated_Image_iecmgriecmgriecm.jpg",
-            imageAlt: "Affiche McDo X Willy Wonka"
+            title: "Question A : Comment percevez-vous cette première offre (Craq'n'Mac) ?",
+            imageSrc: "image1.jpg", // NOUVEAU NOM : image1.jpg
+            imageAlt: "Affiche McDo Craq'n'Mac"
         },
         'B': {
-            title: "Question B : Comment percevez-vous cette première offre (Craq'n'Mac) ?",
-            imageSrc: "affiche 1 McDo.jpg",
-            imageAlt: "Affiche Craq'n'Mac"
+            title: "Question B : Comment percevez-vous cette première offre (McDo X Wonka) ?",
+            imageSrc: "image2.jpg", // NOUVEAU NOM : image2.jpg
+            imageAlt: "Affiche McDo X Willy Wonka"
         }
     };
     
@@ -457,7 +459,7 @@
         
         const motivations = Array.from(form.querySelectorAll('input[name="motivation"]:checked')).map(cb => cb.value);
 
-        // Validation simple (ajustée pour la nouvelle question image)
+        // Validation simple
         if (!ab_version || !age || !frequence || !achat_wonka || !achat_seul || !price) {
             alert("Veuillez répondre à toutes les questions principales pour continuer.");
             return;
@@ -492,7 +494,7 @@
 
 
         // --- AFFICHAGE DES RÉSULTATS (Simulation) ---
-        document.getElementById('res_ab_version').innerText = ab_version === 'A' ? 'A (Wonka)' : 'B (Craq\'n\'Mac)';
+        document.getElementById('res_ab_version').innerText = ab_version === 'A' ? 'A (Craq\'n\'Mac)' : 'B (Wonka)';
         document.getElementById('res_age').innerText = age;
         document.getElementById('res_depense').innerText = depense + ' €';
         document.getElementById('res_achat_wonka').innerText = achat_wonka === 'oui_wonka' ? 'Oui' : 'Non';
