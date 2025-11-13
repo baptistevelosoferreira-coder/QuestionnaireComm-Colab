@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sondage Marketing - McDo Chocolat</title>
+    <style>
+        /*
+        ==================================================
+        CSS (STYLE)
+        ==================================================
+        */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #ffc72c; /* Jaune McDo */
+            font-size: 2.2em;
+            border-bottom: 3px solid #c00; /* Rouge McDo */
+            padding-bottom: 10px;
+        }
+
+        .question-group {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+
+        .question-group h3 {
+            margin-top: 0;
+            color: #c00;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        input[type="radio"], input[type="range"] {
+            margin-right: 10px;
+        }
+
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #c00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #a00;
+        }
+
+        /* Style pour les résultats */
+        #results {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px dashed #009933;
+            background-color: #e6ffe6;
+            border-radius: 8px;
+            display: none; /* Caché par défaut */
+        }
+
+        #results h2 {
+            color: #009933;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Sondage Marketing : Le Chocolat McDo</h1>
+        <p>Aidez-nous à choisir la meilleure stratégie pour le lancement de notre tablette de chocolat.</p>
+    </header>
+
+    <form id="marketingSurvey">
+        
+        <div class="question-group">
+            <h3>1. Quel concept vous attire le plus ?</h3>
+            <label>
+                <input type="radio" name="concept_preference" value="McDo_Wonka" required>
+                Tablette de chocolat en **partenariat McDo X Willy Wonka** (Édition Limitée, Magie, Rêve)
+            </label>
+            <label>
+                <input type="radio" name="concept_preference" value="McDo_Seul">
+                Tablette de chocolat de la **marque McDo seule** (Goût iconique, Familial, Classique)
+            </label>
+        </div>
+
+        <div class="question-group">
+            <h3>2. Si c'était la tablette McDo X Willy Wonka, quelle est votre intention d'achat ? (1 = Pas du tout, 5 = Certainement)</h3>
+            <input type="range" id="intent_wonka" name="intent_wonka" min="1" max="5" value="3" oninput="document.getElementById('value_wonka').innerText=this.value">
+            <div class="range-labels">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+            <p>Score sélectionné : <strong id="value_wonka">3</strong></p>
+        </div>
+
+        <div class="question-group">
+            <h3>3. Si c'était la tablette McDo seule, quelle est votre intention d'achat ? (1 = Pas du tout, 5 = Certainement)</h3>
+            <input type="range" id="intent_seul" name="intent_seul" min="1" max="5" value="3" oninput="document.getElementById('value_seul').innerText=this.value">
+            <div class="range-labels">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+            <p>Score sélectionné : <strong id="value_seul">3</strong></p>
+        </div>
+
+        <div class="question-group">
+            <h3>4. Quel prix vous semblerait juste pour une tablette de chocolat McDo de qualité standard ? (en €)</h3>
+            <label>Prix idéal (€) : 
+                <input type="number" name="price" placeholder="Ex: 2.50" step="0.01" min="1" required>
+            </label>
+        </div>
+
+        <button type="submit">Valider mes réponses</button>
+    </form>
+
+    <div id="results">
+        <h2>✅ Vos Réponses (Simulation)</h2>
+        <p><strong>Concept Préféré :</strong> <span id="res_concept"></span></p>
+        <p><strong>Intention Wonka :</strong> <span id="res_wonka"></span> / 5</p>
+        <p><strong>Intention Seule :</strong> <span id="res_seul"></span> / 5</p>
+        <p><strong>Prix Suggéré :</strong> <span id="res_price"></span> €</p>
+        <p class="note">**NOTE IMPORTANTE :** Dans une campagne réelle, ces données seraient envoyées à une base de données (via un service backend) et non affichées ici.</p>
+    </div>
+
+</div>
+
+<script>
+    /*
+    ==================================================
+    JAVASCRIPT (LOGIQUE)
+    ==================================================
+    */
+    document.getElementById('marketingSurvey').addEventListener('submit', function(event) {
+        // Empêche le rechargement de la page par défaut du formulaire
+        event.preventDefault();
+
+        // Récupération des valeurs du formulaire
+        const form = event.target;
+        const concept = form.querySelector('input[name="concept_preference"]:checked');
+        const intentWonka = form.elements['intent_wonka'].value;
+        const intentSeul = form.elements['intent_seul'].value;
+        const price = form.elements['price'].value;
+
+        // Validation simple
+        if (!concept) {
+            alert("Veuillez choisir un concept préféré pour continuer.");
+            return;
+        }
+
+        // --- SIMULATION DE L'ENVOI DES DONNÉES ---
+        // Dans une application réelle, vous utiliseriez l'API fetch() pour envoyer ces données 
+        // à un serveur (ex: PHP, Python, Node.js) qui les enregistrerait dans une base de données.
+        
+        const data = {
+            concept: concept.value,
+            intent_wonka: intentWonka,
+            intent_seul: intentSeul,
+            price: price
+        };
+        
+        console.log("Données collectées (à envoyer) :", data);
+
+
+        // --- AFFICHAGE DES RÉSULTATS (À ENLEVER POUR LA CAMPAGNE FINALE) ---
+        // Cette partie sert juste à vous montrer que les données sont bien capturées.
+
+        document.getElementById('res_concept').innerText = (concept.value === 'McDo_Wonka' ? 'McDo X Willy Wonka' : 'McDo Seul');
+        document.getElementById('res_wonka').innerText = intentWonka;
+        document.getElementById('res_seul').innerText = intentSeul;
+        document.getElementById('res_price').innerText = price;
+        
+        document.getElementById('marketingSurvey').style.display = 'none'; // Cache le formulaire
+        document.getElementById('results').style.display = 'block'; // Affiche la zone de résultats
+        
+        alert("Merci pour votre participation !");
+    });
+</script>
+
+</body>
+</html>
