@@ -7,7 +7,7 @@
     <style>
         /*
         ==================================================
-        CSS (STYLE AMÉLIORÉ)
+        CSS (STYLE AMÉLIORÉ avec Logo McDo en Fond)
         ==================================================
         */
         :root {
@@ -20,7 +20,6 @@
 
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--mcdo-yellow); /* Fond jaune pour capter l'attention */
             color: var(--text-color);
             margin: 0;
             padding: 20px;
@@ -28,16 +27,31 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            
+            /* --- NOUVEAU FOND AVEC LOGO MCDO --- */
+            background-color: var(--mcdo-yellow); /* Couleur de secours */
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_logo.svg/1200px-McDonald%27s_logo.svg.png'); 
+            background-repeat: repeat; /* Répète le logo sur toute la surface */
+            background-size: 150px; /* Taille du logo pour la répétition */
+            
+            /* Le filtre rend le fond semi-transparent et moins agressif pour la lisibilité */
+            filter: opacity(0.2) saturate(0.5); 
+            /* Note: La propriété filter est appliquée au body. Pour éviter que le questionnaire lui-même
+               soit filtré, nous allons annuler le filtre sur le .container */
         }
 
         .container {
-            background-color: var(--bg-white);
+            background-color: rgba(255, 255, 255, 0.95); /* Fond presque blanc pour la lisibilité */
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             max-width: 700px;
             width: 100%;
-            border-top: 5px solid var(--mcdo-red); /* Bordure rouge McDo */
+            border-top: 5px solid var(--mcdo-red);
+            
+            /* Annuler l'effet du filtre sur le body pour le contenu */
+            filter: none; 
+            position: relative; /* Assure que le contenu reste au-dessus */
         }
 
         header {
@@ -120,7 +134,6 @@
         input[type="range"] {
             width: 100%;
             margin-top: 15px;
-            /* Ajout de styles pour une meilleure visibilité du curseur */
         }
 
         .range-labels {
