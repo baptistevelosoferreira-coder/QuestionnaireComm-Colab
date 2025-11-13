@@ -5,27 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sondage Marketing - McDo Chocolat</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         /*
         ==================================================
-        CSS (STYLE MODERNISÉ - Vert Sapin)
+        CSS (STYLE MCDO THÉMATIQUE)
         ==================================================
         */
         :root {
             --sapin-green: #004d40; /* Vert Sapin / Forêt Profond */
             --light-cream: #f9f9f9; /* Crème très clair pour le fond des cartes */
-            --accent-gold: #ffc72c; /* Jaune/Or (Rappel McDo) */
-            --accent-red: #c00; /* Rouge (Rappel McDo) */
-            --text-dark: #333;
-            --text-light: #555;
+            --accent-gold: #ffc72c; /* Jaune/Or McDo */
+            --accent-red: #c00; /* Rouge McDo */
+            --text-on-dark: #f0f0f0; /* Texte très clair pour le fond vert */
+            --text-dark: #333; /* Texte sombre pour les cartes claires */
+            --text-light: #555; /* Texte un peu plus clair pour les cartes claires */
+            --mcdo-font: 'Oswald', sans-serif; /* Police style McDo */
+            --body-font: Arial, sans-serif; /* Police de corps classique */
         }
 
         body {
-            font-family: 'Poppins', sans-serif; /* Police moderne */
+            font-family: var(--body-font);
             background-color: var(--sapin-green); /* Fond Vert Sapin */
-            color: var(--text-dark);
+            color: var(--text-on-dark);
             margin: 0;
             padding: 30px;
             display: flex;
@@ -37,11 +40,12 @@
         .container {
             background-color: var(--light-cream);
             padding: 50px;
-            border-radius: 15px; /* Coins plus arrondis */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Ombre douce et profonde */
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             max-width: 750px;
             width: 100%;
-            border-top: 8px solid var(--accent-gold); /* Bande accent Or */
+            border-top: 8px solid var(--accent-gold); 
+            color: var(--text-dark); /* Le texte dans le container redevient sombre */
         }
 
         header {
@@ -50,16 +54,17 @@
         }
 
         header h1 {
-            color: var(--accent-red); /* Titre en Rouge McDo */
-            font-size: 2.8em;
+            font-family: var(--mcdo-font); /* TITRE en police McDo */
+            color: var(--accent-gold); /* Titre principal en Jaune McDo */
+            font-size: 3.2em; /* Titre plus grand */
             font-weight: 700;
             margin-bottom: 10px;
+            line-height: 1.1;
         }
 
         header p {
-            color: var(--text-light);
+            color: var(--text-light); 
             font-size: 1.2em;
-            font-weight: 300;
         }
 
         /* Style des groupes de questions (cartes) */
@@ -68,14 +73,15 @@
             padding: 25px;
             border: none;
             border-radius: 10px;
-            background-color: var(--bg-white); /* Blanc pur */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Petite ombre pour l'effet carte */
+            background-color: var(--bg-white); 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
         }
 
         .question-group h3 {
+            font-family: var(--mcdo-font); /* SOUS-TITRES en police McDo */
             margin-top: 0;
-            color: var(--sapin-green); /* Titre de question en Vert Sapin */
-            font-size: 1.4em;
+            color: var(--sapin-green);
+            font-size: 1.6em; /* Sous-titre plus grand et audacieux */
             font-weight: 500;
             border-left: 4px solid var(--accent-gold);
             padding-left: 10px;
@@ -152,7 +158,6 @@
         input[type="range"] {
             width: 100%;
             margin-top: 15px;
-            /* Le reste du style de range est complexe et souvent laissé au navigateur pour la compatibilité */
         }
         .range-labels {
             display: flex;
@@ -160,11 +165,12 @@
             margin-top: 5px;
             font-size: 0.9em;
             color: var(--text-light);
-            font-weight: 500;
+            font-weight: normal;
         }
 
         /* Bouton de soumission */
         button {
+            font-family: var(--mcdo-font); /* Bouton en police McDo */
             display: block;
             width: 100%;
             padding: 18px;
@@ -172,12 +178,12 @@
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1.3em;
+            font-size: 1.5em; /* Bouton plus grand */
             font-weight: 700;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
             margin-top: 30px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         button:hover {
@@ -191,13 +197,15 @@
             margin-top: 40px;
             padding: 30px;
             border: 2px solid var(--sapin-green);
-            background-color: #e8f5e9; /* Vert très clair */
+            background-color: #e8f5e9;
             border-radius: 10px;
             display: none;
             text-align: left;
+            color: var(--text-dark);
         }
 
         #results h2 {
+            font-family: var(--mcdo-font);
             color: var(--sapin-green);
             text-align: center;
         }
@@ -294,25 +302,18 @@
     ==================================================
     */
     document.getElementById('marketingSurvey').addEventListener('submit', function(event) {
-        // Empêche le rechargement de la page par défaut du formulaire
         event.preventDefault();
 
-        // Récupération des valeurs du formulaire
         const form = event.target;
         const concept = form.querySelector('input[name="concept_preference"]:checked');
         const intentWonka = form.elements['intent_wonka'].value;
         const intentSeul = form.elements['intent_seul'].value;
         const price = form.elements['price'].value;
 
-        // Validation simple
         if (!concept) {
             alert("Veuillez choisir un concept préféré pour continuer.");
             return;
         }
-
-        // --- SIMULATION DE L'ENVOI DES DONNÉES ---
-        // Dans une application réelle, vous utiliseriez l'API fetch() pour envoyer ces données 
-        // à un serveur (ex: PHP, Python, Node.js) qui les enregistrerait dans une base de données.
         
         const data = {
             concept: concept.value,
@@ -323,17 +324,13 @@
         
         console.log("Données collectées (à envoyer) :", data);
 
-
-        // --- AFFICHAGE DES RÉSULTATS (À ENLEVER POUR LA CAMPAGNE FINALE) ---
-        // Cette partie sert juste à vous montrer que les données sont bien capturées.
-
         document.getElementById('res_concept').innerText = (concept.value === 'McDo_Wonka' ? 'McDo X Willy Wonka' : 'McDo Seul');
         document.getElementById('res_wonka').innerText = intentWonka;
         document.getElementById('res_seul').innerText = intentSeul;
         document.getElementById('res_price').innerText = price;
         
-        document.getElementById('marketingSurvey').style.display = 'none'; // Cache le formulaire
-        document.getElementById('results').style.display = 'block'; // Affiche la zone de résultats
+        document.getElementById('marketingSurvey').style.display = 'none'; 
+        document.getElementById('results').style.display = 'block'; 
         
         alert("Merci pour votre participation !");
     });
