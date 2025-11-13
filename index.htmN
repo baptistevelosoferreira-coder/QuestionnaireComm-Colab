@@ -4,116 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sondage Marketing - McDo Chocolat</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
     <style>
         /*
         ==================================================
-        CSS (STYLE AMÉLIORÉ avec Logo McDo en Fond)
+        CSS (STYLE MODERNISÉ - Vert Sapin)
         ==================================================
         */
         :root {
-            --mcdo-red: #c00;
-            --mcdo-yellow: #ffc72c;
-            --text-color: #333;
-            --bg-light: #f4f4f4;
-            --bg-white: #ffffff;
+            --sapin-green: #004d40; /* Vert Sapin / Forêt Profond */
+            --light-cream: #f9f9f9; /* Crème très clair pour le fond des cartes */
+            --accent-gold: #ffc72c; /* Jaune/Or (Rappel McDo) */
+            --accent-red: #c00; /* Rouge (Rappel McDo) */
+            --text-dark: #333;
+            --text-light: #555;
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: var(--text-color);
+            font-family: 'Poppins', sans-serif; /* Police moderne */
+            background-color: var(--sapin-green); /* Fond Vert Sapin */
+            color: var(--text-dark);
             margin: 0;
-            padding: 20px;
+            padding: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            
-            /* --- NOUVEAU FOND AVEC LOGO MCDO --- */
-            background-color: var(--mcdo-yellow); /* Couleur de secours */
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_logo.svg/1200px-McDonald%27s_logo.svg.png'); 
-            background-repeat: repeat; /* Répète le logo sur toute la surface */
-            background-size: 150px; /* Taille du logo pour la répétition */
-            
-            /* Le filtre rend le fond semi-transparent et moins agressif pour la lisibilité */
-            filter: opacity(0.2) saturate(0.5); 
-            /* Note: La propriété filter est appliquée au body. Pour éviter que le questionnaire lui-même
-               soit filtré, nous allons annuler le filtre sur le .container */
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.95); /* Fond presque blanc pour la lisibilité */
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            max-width: 700px;
+            background-color: var(--light-cream);
+            padding: 50px;
+            border-radius: 15px; /* Coins plus arrondis */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Ombre douce et profonde */
+            max-width: 750px;
             width: 100%;
-            border-top: 5px solid var(--mcdo-red);
-            
-            /* Annuler l'effet du filtre sur le body pour le contenu */
-            filter: none; 
-            position: relative; /* Assure que le contenu reste au-dessus */
+            border-top: 8px solid var(--accent-gold); /* Bande accent Or */
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         header h1 {
-            color: var(--mcdo-red);
-            font-size: 2.5em;
-            margin-bottom: 5px;
-            font-weight: 900;
+            color: var(--accent-red); /* Titre en Rouge McDo */
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         header p {
-            color: #666;
-            font-size: 1.1em;
+            color: var(--text-light);
+            font-size: 1.2em;
+            font-weight: 300;
         }
 
-        /* Style pour les groupes de questions */
+        /* Style des groupes de questions (cartes) */
         .question-group {
             margin-bottom: 30px;
-            padding: 20px;
-            border: 1px solid #ddd;
+            padding: 25px;
+            border: none;
             border-radius: 10px;
-            background-color: var(--bg-light);
+            background-color: var(--bg-white); /* Blanc pur */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Petite ombre pour l'effet carte */
         }
 
         .question-group h3 {
             margin-top: 0;
-            color: var(--mcdo-red);
-            font-size: 1.3em;
-            border-bottom: 2px solid var(--mcdo-yellow);
-            padding-bottom: 8px;
-            margin-bottom: 15px;
+            color: var(--sapin-green); /* Titre de question en Vert Sapin */
+            font-size: 1.4em;
+            font-weight: 500;
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 10px;
+            margin-bottom: 20px;
         }
 
-        /* Styles des options radio/checkbox */
+        /* Styles des options (pour les rendre plus cliquables) */
         label {
-            display: flex; /* Alignement */
+            display: flex;
             align-items: center;
-            margin: 12px 0;
-            padding: 10px;
-            border-radius: 6px;
-            transition: background-color 0.2s;
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 8px;
+            transition: background-color 0.2s, box-shadow 0.2s;
             cursor: pointer;
+            border: 1px solid #eee;
         }
 
         label:hover {
-            background-color: #ffe899; /* Survol des options */
+            background-color: #fff3cc; /* Jaune clair au survol */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        input[type="radio"], input[type="checkbox"] {
-            appearance: none; /* Cache le style natif */
+        /* Styles des boutons radio modernes */
+        input[type="radio"] {
+            appearance: none;
             width: 18px;
             height: 18px;
-            border: 2px solid var(--mcdo-red);
-            border-radius: 50%; /* Pour les radios */
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
             margin-right: 15px;
             display: grid;
             place-content: center;
             cursor: pointer;
+            transition: border-color 0.2s;
         }
 
         input[type="radio"]::before {
@@ -123,84 +120,101 @@
             border-radius: 50%;
             transform: scale(0);
             transition: 120ms transform ease-in-out;
-            box-shadow: inset 1em 1em var(--mcdo-red);
+            box-shadow: inset 1em 1em var(--accent-red);
         }
 
+        input[type="radio"]:checked {
+            border-color: var(--accent-red);
+        }
+        
         input[type="radio"]:checked::before {
             transform: scale(1);
         }
+        
+        /* Styles des champs de texte/nombre */
+        input[type="number"], input[type="text"] {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 90%;
+            margin-top: 10px;
+            font-size: 1em;
+            transition: border-color 0.2s;
+        }
+        
+        input[type="number"]:focus, input[type="text"]:focus {
+            border-color: var(--accent-gold);
+            outline: none;
+        }
 
-        /* Style du range slider */
+
+        /* Style du Range Slider */
         input[type="range"] {
             width: 100%;
             margin-top: 15px;
+            /* Le reste du style de range est complexe et souvent laissé au navigateur pour la compatibilité */
         }
-
         .range-labels {
             display: flex;
             justify-content: space-between;
             margin-top: 5px;
             font-size: 0.9em;
-            color: #666;
-            font-weight: bold;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
-        /* Styles des champs de texte et nombre */
-        input[type="number"], input[type="text"] {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: calc(100% - 22px);
-            margin-top: 5px;
-        }
-
-        /* Styles du bouton de soumission */
+        /* Bouton de soumission */
         button {
             display: block;
             width: 100%;
-            padding: 15px;
-            background-color: var(--mcdo-red);
+            padding: 18px;
+            background-color: var(--accent-red);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 1.2em;
-            font-weight: bold;
+            border-radius: 10px;
+            font-size: 1.3em;
+            font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.1s;
-            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 30px;
+            letter-spacing: 1px;
         }
 
         button:hover {
             background-color: #a00;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Style pour les résultats (Post-soumission) */
         #results {
-            margin-top: 30px;
-            padding: 25px;
-            border: 2px solid var(--mcdo-red);
-            background-color: #fff9e6; /* Jaune très clair */
+            margin-top: 40px;
+            padding: 30px;
+            border: 2px solid var(--sapin-green);
+            background-color: #e8f5e9; /* Vert très clair */
             border-radius: 10px;
             display: none;
-            text-align: center;
+            text-align: left;
         }
 
         #results h2 {
-            color: #008000; /* Vert pour la validation */
+            color: var(--sapin-green);
+            text-align: center;
         }
         
         #results p {
             font-size: 1.1em;
             margin: 10px 0;
-            text-align: left;
+            padding-left: 10px;
+            border-left: 3px solid var(--accent-gold);
         }
         
         .note {
             font-style: italic;
-            font-size: 0.9em;
+            font-size: 0.8em;
             color: #999;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -297,7 +311,8 @@
         }
 
         // --- SIMULATION DE L'ENVOI DES DONNÉES ---
-        // Cette partie est à remplacer par votre code d'envoi de données réel (Formspree, etc.)
+        // Dans une application réelle, vous utiliseriez l'API fetch() pour envoyer ces données 
+        // à un serveur (ex: PHP, Python, Node.js) qui les enregistrerait dans une base de données.
         
         const data = {
             concept: concept.value,
@@ -310,7 +325,7 @@
 
 
         // --- AFFICHAGE DES RÉSULTATS (À ENLEVER POUR LA CAMPAGNE FINALE) ---
-        // Ceci est juste pour vous montrer que les données sont capturées.
+        // Cette partie sert juste à vous montrer que les données sont bien capturées.
 
         document.getElementById('res_concept').innerText = (concept.value === 'McDo_Wonka' ? 'McDo X Willy Wonka' : 'McDo Seul');
         document.getElementById('res_wonka').innerText = intentWonka;
