@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sondage Marketing - McDo Chocolat</title>
+    <title>Sondage Marketing - McDo X Willy Wonka</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     
@@ -45,7 +45,7 @@
             max-width: 750px;
             width: 100%;
             border-top: 8px solid var(--accent-gold); 
-            color: var(--text-dark); /* Le texte dans le container redevient sombre */
+            color: var(--text-dark);
         }
 
         header {
@@ -54,9 +54,9 @@
         }
 
         header h1 {
-            font-family: var(--mcdo-font); /* TITRE en police McDo */
-            color: var(--accent-gold); /* Titre principal en Jaune McDo */
-            font-size: 3.2em; /* Titre plus grand */
+            font-family: var(--mcdo-font);
+            color: var(--accent-gold);
+            font-size: 3.2em;
             font-weight: 700;
             margin-bottom: 10px;
             line-height: 1.1;
@@ -78,10 +78,10 @@
         }
 
         .question-group h3 {
-            font-family: var(--mcdo-font); /* SOUS-TITRES en police McDo */
+            font-family: var(--mcdo-font);
             margin-top: 0;
             color: var(--sapin-green);
-            font-size: 1.6em; /* Sous-titre plus grand et audacieux */
+            font-size: 1.6em;
             font-weight: 500;
             border-left: 4px solid var(--accent-gold);
             padding-left: 10px;
@@ -101,12 +101,12 @@
         }
 
         label:hover {
-            background-color: #fff3cc; /* Jaune clair au survol */
+            background-color: #fff3cc;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Styles des boutons radio modernes */
-        input[type="radio"] {
+        /* Styles des boutons radio/checkbox modernes */
+        input[type="radio"], input[type="checkbox"] {
             appearance: none;
             width: 18px;
             height: 18px;
@@ -118,22 +118,31 @@
             cursor: pointer;
             transition: border-color 0.2s;
         }
+        
+        /* Pour les checkboxes, on utilise un carré */
+        input[type="checkbox"] {
+            border-radius: 4px;
+        }
 
-        input[type="radio"]::before {
+        input[type="radio"]::before, input[type="checkbox"]::before {
             content: "";
             width: 10px;
             height: 10px;
-            border-radius: 50%;
+            border-radius: 50%; /* Ronds pour les radios */
             transform: scale(0);
             transition: 120ms transform ease-in-out;
             box-shadow: inset 1em 1em var(--accent-red);
         }
 
-        input[type="radio"]:checked {
+        input[type="checkbox"]::before {
+            border-radius: 2px; /* Carré pour les checkboxes */
+        }
+
+        input[type="radio"]:checked, input[type="checkbox"]:checked {
             border-color: var(--accent-red);
         }
         
-        input[type="radio"]:checked::before {
+        input[type="radio"]:checked::before, input[type="checkbox"]:checked::before {
             transform: scale(1);
         }
         
@@ -170,7 +179,7 @@
 
         /* Bouton de soumission */
         button {
-            font-family: var(--mcdo-font); /* Bouton en police McDo */
+            font-family: var(--mcdo-font);
             display: block;
             width: 100%;
             padding: 18px;
@@ -178,7 +187,7 @@
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1.5em; /* Bouton plus grand */
+            font-size: 1.5em;
             font-weight: 700;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
@@ -231,54 +240,127 @@
 <div class="container">
     <header>
         <h1>Sondage Marketing : Le Chocolat McDo</h1>
-        <p>Aidez-nous à choisir la meilleure stratégie pour le lancement de notre tablette de chocolat.</p>
+        <p>Aidez-nous à affiner notre offre en répondant à ce questionnaire sur vos habitudes.</p>
     </header>
 
     <form id="marketingSurvey">
         
         <div class="question-group">
-            <h3>1. Quel concept vous attire le plus ?</h3>
+            <h3>Partie 1 – Profil du répondant</h3>
+            
+            <h4>Quel est votre âge ?</h4>
+            <label><input type="radio" name="age" value="moins_18" required> Moins de 18 ans</label>
+            <label><input type="radio" name="age" value="18_24"> 18-24 ans</label>
+            <label><input type="radio" name="age" value="25_34"> 25-34 ans</label>
+            <label><input type="radio" name="age" value="35_44"> 35-44 ans</label>
+            <label><input type="radio" name="age" value="45_plus"> 45 ans et plus</label>
+
+            <h4>Quelle est votre situation actuelle ?</h4>
+            <label><input type="radio" name="situation" value="etudiant" required> Étudiant</label>
+            <label><input type="radio" name="situation" value="salarie"> Salarié</label>
+            <label><input type="radio" name="situation" value="independant"> Indépendant</label>
+            <label><input type="radio" name="situation" value="sans_emploi"> Sans emploi</label>
+            <label>Autre : <input type="text" name="situation_autre" placeholder="Précisez"></label>
+            
+            <h4>Dans quelle zone géographique résidez-vous ?</h4>
+            <label><input type="radio" name="zone" value="urbaine" required> Zone urbaine</label>
+            <label><input type="radio" name="zone" value="rurale"> Zone rurale / périurbaine</label>
+        </div>
+
+        <div class="question-group">
+            <h3>Partie 2 – Habitudes de consommation chez McDonald’s</h3>
+            
+            <h4>À quelle fréquence allez-vous chez McDonald’s ?</h4>
+            <label><input type="radio" name="frequence" value="plusieurs_par_semaine" required> Plusieurs fois par semaine</label>
+            <label><input type="radio" name="frequence" value="une_par_semaine"> Environ une fois par semaine</label>
+            <label><input type="radio" name="frequence" value="1_a_3_par_mois"> 1 à 3 fois par mois</label>
+            <label><input type="radio" name="frequence" value="moins_une_par_mois"> Moins d’une fois par mois</label>
+            <label><input type="radio" name="frequence" value="jamais"> Jamais</label>
+
+            <h4>Quelle est votre dépense moyenne lors d’une visite chez McDonald’s ?</h4>
+            <label><input type="radio" name="depense" value="moins_8" required> Moins de 8 €</label>
+            <label><input type="radio" name="depense" value="8_12"> 8 à 12 €</label>
+            <label><input type="radio" name="depense" value="13_17"> 13 à 17 €</label>
+            <label><input type="radio" name="depense" value="plus_17"> Plus de 17 €</label>
+
+            <h4>À quel moment de la journée allez-vous le plus souvent chez McDonald’s ?</h4>
+            <label><input type="radio" name="moment" value="midi" required> Le midi</label>
+            <label><input type="radio" name="moment" value="soir"> Le soir</label>
+            <label><input type="radio" name="moment" value="fin_soiree"> En fin de soirée</label>
+            <label><input type="radio" name="moment" value="week_end"> En week-end</label>
+            <label>Autre : <input type="text" name="moment_autre" placeholder="Précisez"></label>
+            
+            <h4>Quelles sont vos motivations lorsque vous allez chez McDonald’s ?</h4>
+            <label><input type="checkbox" name="motivation" value="prix"> Prix abordable</label>
+            <label><input type="checkbox" name="motivation" value="rapidite"> Rapidité du service</label>
+            <label><input type="checkbox" name="motivation" value="gout"> Goût / plaisir</label>
+            <label><input type="checkbox" name="motivation" value="habitude"> Habitude</label>
+            <label><input type="checkbox" name="motivation" value="accessibilite"> Accessibilité (proximité)</label>
+            <label>Autre : <input type="text" name="motivation_autre" placeholder="Précisez"></label>
+            
+            <h4>Lorsque vous consommez chez McDonald’s, préférez-vous :</h4>
+            <label><input type="radio" name="conso_pref" value="sur_place" required> Manger sur place</label>
+            <label><input type="radio" name="conso_pref" value="emporter"> Prendre à emporter</label>
+            <label><input type="radio" name="conso_pref" value="drive"> Utiliser le drive</label>
+            <label><input type="radio" name="conso_pref" value="appli"> Commander via l’application</label>
+        </div>
+
+        <div class="question-group">
+            <h3>Partie 3 – Perception des prix et de l’offre</h3>
+            
+            <h4>Trouvez-vous que les prix chez McDonald’s ont augmenté ces dernières années ?</h4>
+            <label><input type="radio" name="prix_augmente" value="oui_bcp" required> Oui, beaucoup</label>
+            <label><input type="radio" name="prix_augmente" value="oui_un_peu"> Oui, un peu</label>
+            <label><input type="radio" name="prix_augmente" value="non"> Non, pas vraiment</label>
+            <label><input type="radio" name="prix_augmente" value="sais_pas"> Je ne sais pas</label>
+
+            <h4>Trouvez-vous que le rapport qualité/prix chez McDonald’s est :</h4>
+            <label><input type="radio" name="qualite_prix" value="excellent" required> Excellent</label>
+            <label><input type="radio" name="qualite_prix" value="bon"> Bon</label>
+            <label><input type="radio" name="qualite_prix" value="moyen"> Moyen</label>
+            <label><input type="radio" name="qualite_prix" value="mauvais"> Mauvais</label>
+
+            <h4>Utilisez-vous l’application McDo+ pour commander ou profiter d’offres ?</h4>
+            <label><input type="radio" name="appli_mcdo" value="regulierement" required> Oui, régulièrement</label>
+            <label><input type="radio" name="appli_mcdo" value="temps_en_temps"> Oui, de temps en temps</label>
+            <label><input type="radio" name="appli_mcdo" value="jamais"> Non, jamais</label>
+
+            <h4>Êtes-vous fidèle à McDonald’s (par rapport aux autres fast-foods) ?</h4>
+            <label><input type="radio" name="fidelite" value="exclusivement" required> Oui, exclusivement</label>
+            <label><input type="radio" name="fidelite" value="aussi_ailleurs"> Oui, mais j’y vais aussi ailleurs</label>
+            <label><input type="radio" name="fidelite" value="varie"> Non, je varie souvent</label>
+
+            <h4>Pensez-vous que McDonald’s propose une offre adaptée aux attentes actuelles (qualité, diversité, prix) ?</h4>
+            <label><input type="radio" name="offre_adaptee" value="tout_a_fait" required> Oui tout à fait</label>
+            <label><input type="radio" name="offre_adaptee" value="plutot_oui"> Plutôt oui</label>
+            <label><input type="radio" name="offre_adaptee" value="plutot_non"> Plutôt non</label>
+            <label><input type="radio" name="offre_adaptee" value="pas_du_tout"> Pas du tout</label>
+        </div>
+        
+        <div class="question-group">
+            <h3>Partie 4 – Comparaison des Concepts Chocolat</h3>
+
+            <h4>Seriez-vous prêt à acheter la tablette de chocolat **McDo X Willy Wonka** ?</h4>
             <label>
-                <input type="radio" name="concept_preference" value="McDo_Wonka" required>
-                Tablette de chocolat en **partenariat McDo X Willy Wonka** (Édition Limitée, Magie, Rêve)
+                <input type="radio" name="achat_wonka" value="oui_wonka" required> Oui
             </label>
             <label>
-                <input type="radio" name="concept_preference" value="McDo_Seul">
-                Tablette de chocolat de la **marque McDo seule** (Goût iconique, Familial, Classique)
+                <input type="radio" name="achat_wonka" value="non_wonka"> Non
             </label>
-        </div>
 
-        <div class="question-group">
-            <h3>2. Si c'était la tablette McDo X Willy Wonka, quelle est votre intention d'achat ? (1 = Pas du tout, 5 = Certainement)</h3>
-            <input type="range" id="intent_wonka" name="intent_wonka" min="1" max="5" value="3" oninput="document.getElementById('value_wonka').innerText=this.value">
-            <div class="range-labels">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-            </div>
-            <p>Score sélectionné : <strong id="value_wonka">3</strong></p>
-        </div>
-
-        <div class="question-group">
-            <h3>3. Si c'était la tablette McDo seule, quelle est votre intention d'achat ? (1 = Pas du tout, 5 = Certainement)</h3>
-            <input type="range" id="intent_seul" name="intent_seul" min="1" max="5" value="3" oninput="document.getElementById('value_seul').innerText=this.value">
-            <div class="range-labels">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-            </div>
-            <p>Score sélectionné : <strong id="value_seul">3</strong></p>
-        </div>
-
-        <div class="question-group">
-            <h3>4. Quel prix vous semblerait juste pour une tablette de chocolat McDo de qualité standard ? (en €)</h3>
-            <label>Prix idéal (€) : 
-                <input type="number" name="price" placeholder="Ex: 2.50" step="0.01" min="1" required>
+            <h4>Seriez-vous prêt à acheter la tablette de chocolat **McDo seule** ?</h4>
+            <label>
+                <input type="radio" name="achat_seul" value="oui_seul" required> Oui
             </label>
+            <label>
+                <input type="radio" name="achat_seul" value="non_seul"> Non
+            </label>
+
+            <h4>À quel prix seriez-vous prêt à acheter ce produit (supposé inclus dans un menu) ?</h4>
+            <label><input type="radio" name="price" value="menu_plus_2" required> Prix du menu + 2 €</label>
+            <label><input type="radio" name="price" value="menu_plus_3"> Prix du menu + 3 €</label>
+            <label><input type="radio" name="price" value="menu_plus_4"> Prix du menu + 4 €</label>
+
         </div>
 
         <button type="submit">Valider mes réponses</button>
@@ -286,55 +368,5 @@
 
     <div id="results">
         <h2>✅ Vos Réponses (Simulation)</h2>
-        <p><strong>Concept Préféré :</strong> <span id="res_concept"></span></p>
-        <p><strong>Intention Wonka :</strong> <span id="res_wonka"></span> / 5</p>
-        <p><strong>Intention Seule :</strong> <span id="res_seul"></span> / 5</p>
-        <p><strong>Prix Suggéré :</strong> <span id="res_price"></span> €</p>
-        <p class="note">**NOTE IMPORTANTE :** Dans une campagne réelle, ces données seraient envoyées à une base de données (via un service backend) et non affichées ici.</p>
-    </div>
-
-</div>
-
-<script>
-    /*
-    ==================================================
-    JAVASCRIPT (LOGIQUE)
-    ==================================================
-    */
-    document.getElementById('marketingSurvey').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const form = event.target;
-        const concept = form.querySelector('input[name="concept_preference"]:checked');
-        const intentWonka = form.elements['intent_wonka'].value;
-        const intentSeul = form.elements['intent_seul'].value;
-        const price = form.elements['price'].value;
-
-        if (!concept) {
-            alert("Veuillez choisir un concept préféré pour continuer.");
-            return;
-        }
-        
-        const data = {
-            concept: concept.value,
-            intent_wonka: intentWonka,
-            intent_seul: intentSeul,
-            price: price
-        };
-        
-        console.log("Données collectées (à envoyer) :", data);
-
-        document.getElementById('res_concept').innerText = (concept.value === 'McDo_Wonka' ? 'McDo X Willy Wonka' : 'McDo Seul');
-        document.getElementById('res_wonka').innerText = intentWonka;
-        document.getElementById('res_seul').innerText = intentSeul;
-        document.getElementById('res_price').innerText = price;
-        
-        document.getElementById('marketingSurvey').style.display = 'none'; 
-        document.getElementById('results').style.display = 'block'; 
-        
-        alert("Merci pour votre participation !");
-    });
-</script>
-
-</body>
-</html>
+        <p><strong>Âge :</strong> <span id="res_age"></span></p>
+        <p>
