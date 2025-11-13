@@ -14,20 +14,20 @@
         ==================================================
         */
         :root {
-            --sapin-green: #004d40; /* Vert Sapin / Forêt Profond */
-            --light-cream: #f9f9f9; /* Crème très clair pour le fond des cartes */
-            --accent-gold: #ffc72c; /* Jaune/Or McDo */
-            --accent-red: #c00; /* Rouge McDo */
-            --text-on-dark: #f0f0f0; /* Texte très clair pour le fond vert */
-            --text-dark: #333; /* Texte sombre pour les cartes claires */
-            --text-light: #555; /* Texte un peu plus clair pour les cartes claires */
-            --mcdo-font: 'Oswald', sans-serif; /* Police style McDo */
-            --body-font: Arial, sans-serif; /* Police de corps classique */
+            --sapin-green: #004d40;
+            --light-cream: #f9f9f9;
+            --accent-gold: #ffc72c;
+            --accent-red: #c00;
+            --text-on-dark: #f0f0f0;
+            --text-dark: #333;
+            --text-light: #555;
+            --mcdo-font: 'Oswald', sans-serif;
+            --body-font: Arial, sans-serif;
         }
 
         body {
             font-family: var(--body-font);
-            background-color: var(--sapin-green); /* Fond Vert Sapin */
+            background-color: var(--sapin-green);
             color: var(--text-on-dark);
             margin: 0;
             padding: 30px;
@@ -42,7 +42,7 @@
             padding: 50px;
             border-radius: 15px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            max-width: 750px;
+            max-width: 850px; /* Augmenté pour mieux accueillir les images */
             width: 100%;
             border-top: 8px solid var(--accent-gold); 
             color: var(--text-dark);
@@ -96,8 +96,57 @@
             margin-top: 25px;
             margin-bottom: 10px;
         }
+        
+        /* Conteneur pour aligner les images côte à côte */
+        .image-comparison-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Permet aux images de passer à la ligne sur mobile */
+        }
+        
+        .image-option {
+            flex: 1 1 45%; /* Donne aux deux images une taille égale, permet de réduire si nécessaire */
+            text-align: center;
+        }
 
-        /* Styles des options (pour les rendre plus cliquables) */
+        .image-option img {
+            max-width: 100%;
+            height: auto;
+            border: 4px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+        
+        /* Met en surbrillance l'image choisie */
+        input[name="image_preference"]:checked + img {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px rgba(255, 199, 44, 0.8);
+        }
+        
+        .image-choice-label {
+            display: block; /* S'assure que le label couvre toute l'option */
+            cursor: pointer;
+            padding: 0;
+            margin-top: 10px;
+            border: none;
+        }
+        
+        .image-choice-label:hover {
+            background-color: transparent;
+            box-shadow: none;
+        }
+        
+        /* Cache les boutons radio standard sous les images, car on clique sur l'image */
+        .image-choice-label input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        /* Styles des autres éléments (non modifiés, mais gardés pour la cohérence) */
         label {
             display: flex;
             align-items: center;
@@ -114,7 +163,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Styles des boutons radio/checkbox modernes */
         input[type="radio"], input[type="checkbox"] {
             appearance: none;
             width: 18px;
@@ -126,10 +174,9 @@
             place-content: center;
             cursor: pointer;
             transition: border-color 0.2s;
-            flex-shrink: 0; /* Empêche les inputs de rétrécir */
+            flex-shrink: 0;
         }
         
-        /* Pour les checkboxes, on utilise un carré */
         input[type="checkbox"] {
             border-radius: 4px;
         }
@@ -156,7 +203,6 @@
             transform: scale(1);
         }
         
-        /* Styles des champs de texte/nombre */
         input[type="number"], input[type="text"] {
             padding: 12px;
             border: 1px solid #ccc;
@@ -165,15 +211,9 @@
             margin-top: 10px;
             font-size: 1em;
             transition: border-color 0.2s;
-            display: block; /* S'assure qu'ils sont sur leur propre ligne */
-        }
-        
-        input[type="number"]:focus, input[type="text"]:focus {
-            border-color: var(--accent-gold);
-            outline: none;
+            display: block;
         }
 
-        /* Adaptation spécifique pour les champs Autre: ___________ */
         label.text-input-label {
             display: block;
             margin-top: 5px;
@@ -187,21 +227,6 @@
             box-shadow: none;
         }
 
-        /* Style du Range Slider */
-        input[type="range"] {
-            width: 100%;
-            margin-top: 15px;
-        }
-        .range-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 5px;
-            font-size: 0.9em;
-            color: var(--text-light);
-            font-weight: normal;
-        }
-
-        /* Bouton de soumission */
         button {
             font-family: var(--mcdo-font);
             display: block;
@@ -225,7 +250,6 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Style pour les résultats (Post-soumission) */
         #results {
             margin-top: 40px;
             padding: 30px;
@@ -241,21 +265,6 @@
             font-family: var(--mcdo-font);
             color: var(--sapin-green);
             text-align: center;
-        }
-        
-        #results p {
-            font-size: 1.1em;
-            margin: 10px 0;
-            padding-left: 10px;
-            border-left: 3px solid var(--accent-gold);
-        }
-        
-        .note {
-            font-style: italic;
-            font-size: 0.8em;
-            color: #999;
-            text-align: center;
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -273,117 +282,136 @@
             <h3>Partie 1 – Profil du répondant</h3>
             
             <h4>Quel est votre âge ?</h4>
-            [cite_start]<label><input type="radio" name="age" value="moins_18" required> Moins de 18 ans [cite: 3]</label>
-            [cite_start]<label><input type="radio" name="age" value="18_24"> 18-24 ans [cite: 3]</label>
-            [cite_start]<label><input type="radio" name="age" value="25_34"> 25-34 ans [cite: 3]</label>
-            [cite_start]<label><input type="radio" name="age" value="35_44"> 35-44 ans [cite: 3]</label>
-            [cite_start]<label><input type="radio" name="age" value="45_plus"> 45 ans et plus [cite: 3]</label>
+            <label><input type="radio" name="age" value="moins_18" required> Moins de 18 ans</label>
+            <label><input type="radio" name="age" value="18_24"> 18-24 ans</label>
+            <label><input type="radio" name="age" value="25_34"> 25-34 ans</label>
+            <label><input type="radio" name="age" value="35_44"> 35-44 ans</label>
+            <label><input type="radio" name="age" value="45_plus"> 45 ans et plus</label>
 
             <h4>Quelle est votre situation actuelle ?</h4>
-            [cite_start]<label><input type="radio" name="situation" value="etudiant" required> Étudiant [cite: 4]</label>
-            [cite_start]<label><input type="radio" name="situation" value="salarie"> Salarié [cite: 4]</label>
-            [cite_start]<label><input type="radio" name="situation" value="independant"> Indépendant [cite: 4]</label>
-            [cite_start]<label><input type="radio" name="situation" value="sans_emploi"> Sans emploi [cite: 4]</label>
-            [cite_start]<label class="text-input-label">Autre : <input type="text" name="situation_autre" placeholder="Précisez"></label> [cite: 4]
+            <label><input type="radio" name="situation" value="etudiant" required> Étudiant</label>
+            <label><input type="radio" name="situation" value="salarie"> Salarié</label>
+            <label><input type="radio" name="situation" value="independant"> Indépendant</label>
+            <label><input type="radio" name="situation" value="sans_emploi"> Sans emploi</label>
+            <label class="text-input-label">Autre : <input type="text" name="situation_autre" placeholder="Précisez"></label>
             
             <h4>Dans quelle zone géographique résidez-vous ?</h4>
-            [cite_start]<label><input type="radio" name="zone" value="urbaine" required> Zone urbaine [cite: 5]</label>
-            [cite_start]<label><input type="radio" name="zone" value="rurale"> Zone rurale / périurbaine [cite: 5]</label>
+            <label><input type="radio" name="zone" value="urbaine" required> Zone urbaine</label>
+            <label><input type="radio" name="zone" value="rurale"> Zone rurale / périurbaine</label>
         </div>
 
         <div class="question-group">
             <h3>Partie 2 – Habitudes de consommation chez McDonald’s</h3>
             
             <h4>À quelle fréquence allez-vous chez McDonald’s ?</h4>
-            [cite_start]<label><input type="radio" name="frequence" value="plusieurs_par_semaine" required> Plusieurs fois par semaine [cite: 7]</label>
-            [cite_start]<label><input type="radio" name="frequence" value="une_par_semaine"> Environ une fois par semaine [cite: 7]</label>
-            [cite_start]<label><input type="radio" name="frequence" value="1_a_3_par_mois"> 1 à 3 fois par mois [cite: 7]</label>
-            [cite_start]<label><input type="radio" name="frequence" value="moins_une_par_mois"> Moins d’une fois par mois [cite: 7]</label>
-            [cite_start]<label><input type="radio" name="frequence" value="jamais"> Jamais [cite: 7]</label>
+            <label><input type="radio" name="frequence" value="plusieurs_par_semaine" required> Plusieurs fois par semaine</label>
+            <label><input type="radio" name="frequence" value="une_par_semaine"> Environ une fois par semaine</label>
+            <label><input type="radio" name="frequence" value="1_a_3_par_mois"> 1 à 3 fois par mois</label>
+            <label><input type="radio" name="frequence" value="moins_une_par_mois"> Moins d’une fois par mois</label>
+            <label><input type="radio" name="frequence" value="jamais"> Jamais</label>
 
             <h4>Quelle est votre dépense moyenne lors d’une visite chez McDonald’s ?</h4>
-            [cite_start]<label><input type="radio" name="depense" value="moins_8" required> Moins de 8 € [cite: 8]</label>
-            [cite_start]<label><input type="radio" name="depense" value="8_12"> 8 à 12 € [cite: 8]</label>
-            [cite_start]<label><input type="radio" name="depense" value="13_17"> 13 à 17 € [cite: 8]</label>
-            [cite_start]<label><input type="radio" name="depense" value="plus_17"> Plus de 17 € [cite: 8]</label>
+            <label><input type="radio" name="depense" value="moins_8" required> Moins de 8 €</label>
+            <label><input type="radio" name="depense" value="8_12"> 8 à 12 €</label>
+            <label><input type="radio" name="depense" value="13_17"> 13 à 17 €</label>
+            <label><input type="radio" name="depense" value="plus_17"> Plus de 17 €</label>
 
             <h4>À quel moment de la journée allez-vous le plus souvent chez McDonald’s ?</h4>
-            [cite_start]<label><input type="radio" name="moment" value="midi" required> Le midi [cite: 9]</label>
-            [cite_start]<label><input type="radio" name="moment" value="soir"> Le soir [cite: 9]</label>
-            [cite_start]<label><input type="radio" name="moment" value="fin_soiree"> En fin de soirée [cite: 9]</label>
-            [cite_start]<label><input type="radio" name="moment" value="week_end"> En week-end [cite: 9]</label>
-            [cite_start]<label class="text-input-label">Autre : <input type="text" name="moment_autre" placeholder="Précisez"></label> [cite: 9]
+            <label><input type="radio" name="moment" value="midi" required> Le midi</label>
+            <label><input type="radio" name="moment" value="soir"> Le soir</label>
+            <label><input type="radio" name="moment" value="fin_soiree"> En fin de soirée</label>
+            <label><input type="radio" name="moment" value="week_end"> En week-end</label>
+            <label class="text-input-label">Autre : <input type="text" name="moment_autre" placeholder="Précisez"></label>
             
             <h4>Quelles sont vos motivations lorsque vous allez chez McDonald’s ?</h4>
-            [cite_start]<label><input type="checkbox" name="motivation" value="prix"> Prix abordable [cite: 10]</label>
-            [cite_start]<label><input type="checkbox" name="motivation" value="rapidite"> Rapidité du service [cite: 10]</label>
-            [cite_start]<label><input type="checkbox" name="motivation" value="gout"> Goût / plaisir [cite: 10]</label>
-            [cite_start]<label><input type="checkbox" name="motivation" value="habitude"> Habitude [cite: 10]</label>
-            [cite_start]<label><input type="checkbox" name="motivation" value="accessibilite"> Accessibilité (proximité) [cite: 10]</label>
-            [cite_start]<label class="text-input-label">Autre : <input type="text" name="motivation_autre" placeholder="Précisez"></label> [cite: 10]
+            <label><input type="checkbox" name="motivation" value="prix"> Prix abordable</label>
+            <label><input type="checkbox" name="motivation" value="rapidite"> Rapidité du service</label>
+            <label><input type="checkbox" name="motivation" value="gout"> Goût / plaisir</label>
+            <label><input type="checkbox" name="motivation" value="habitude"> Habitude</label>
+            <label><input type="checkbox" name="motivation" value="accessibilite"> Accessibilité (proximité)</label>
+            <label class="text-input-label">Autre : <input type="text" name="motivation_autre" placeholder="Précisez"></label>
             
             <h4>Lorsque vous consommez chez McDonald’s, préférez-vous :</h4>
-            [cite_start]<label><input type="radio" name="conso_pref" value="sur_place" required> Manger sur place [cite: 11]</label>
-            [cite_start]<label><input type="radio" name="conso_pref" value="emporter"> Prendre à emporter [cite: 11]</label>
-            [cite_start]<label><input type="radio" name="conso_pref" value="drive"> Utiliser le drive [cite: 11]</label>
-            [cite_start]<label><input type="radio" name="conso_pref" value="appli"> Commander via l’application [cite: 11]</label>
+            <label><input type="radio" name="conso_pref" value="sur_place" required> Manger sur place</label>
+            <label><input type="radio" name="conso_pref" value="emporter"> Prendre à emporter</label>
+            <label><input type="radio" name="conso_pref" value="drive"> Utiliser le drive</label>
+            <label><input type="radio" name="conso_pref" value="appli"> Commander via l’application</label>
         </div>
 
         <div class="question-group">
             <h3>Partie 3 – Perception des prix et de l’offre</h3>
             
             <h4>Trouvez-vous que les prix chez McDonald’s ont augmenté ces dernières années ?</h4>
-            [cite_start]<label><input type="radio" name="prix_augmente" value="oui_bcp" required> Oui, beaucoup [cite: 13]</label>
-            [cite_start]<label><input type="radio" name="prix_augmente" value="oui_un_peu"> Oui, un peu [cite: 13]</label>
-            [cite_start]<label><input type="radio" name="prix_augmente" value="non"> Non, pas vraiment [cite: 13]</label>
-            [cite_start]<label><input type="radio" name="prix_augmente" value="sais_pas"> Je ne sais pas [cite: 13]</label>
+            <label><input type="radio" name="prix_augmente" value="oui_bcp" required> Oui, beaucoup</label>
+            <label><input type="radio" name="prix_augmente" value="oui_un_peu"> Oui, un peu</label>
+            <label><input type="radio" name="prix_augmente" value="non"> Non, pas vraiment</label>
+            <label><input type="radio" name="prix_augmente" value="sais_pas"> Je ne sais pas</label>
 
             <h4>Trouvez-vous que le rapport qualité/prix chez McDonald’s est :</h4>
-            [cite_start]<label><input type="radio" name="qualite_prix" value="excellent" required> Excellent [cite: 14]</label>
-            [cite_start]<label><input type="radio" name="qualite_prix" value="bon"> Bon [cite: 14]</label>
-            [cite_start]<label><input type="radio" name="qualite_prix" value="moyen"> Moyen [cite: 14]</label>
-            [cite_start]<label><input type="radio" name="qualite_prix" value="mauvais"> Mauvais [cite: 14]</label>
+            <label><input type="radio" name="qualite_prix" value="excellent" required> Excellent</label>
+            <label><input type="radio" name="qualite_prix" value="bon"> Bon</label>
+            <label><input type="radio" name="qualite_prix" value="moyen"> Moyen</label>
+            <label><input type="radio" name="qualite_prix" value="mauvais"> Mauvais</label>
 
             <h4>Utilisez-vous l’application McDo+ pour commander ou profiter d’offres ?</h4>
-            [cite_start]<label><input type="radio" name="appli_mcdo" value="regulierement" required> Oui, régulièrement [cite: 15]</label>
-            [cite_start]<label><input type="radio" name="appli_mcdo" value="temps_en_temps"> Oui, de temps en temps [cite: 15]</label>
-            [cite_start]<label><input type="radio" name="appli_mcdo" value="jamais"> Non, jamais [cite: 15]</label>
+            <label><input type="radio" name="appli_mcdo" value="regulierement" required> Oui, régulièrement</label>
+            <label><input type="radio" name="appli_mcdo" value="temps_en_temps"> Oui, de temps en temps</label>
+            <label><input type="radio" name="appli_mcdo" value="jamais"> Non, jamais</label>
 
             <h4>Êtes-vous fidèle à McDonald’s (par rapport aux autres fast-foods) ?</h4>
-            [cite_start]<label><input type="radio" name="fidelite" value="exclusivement" required> Oui, exclusivement [cite: 16]</label>
-            [cite_start]<label><input type="radio" name="fidelite" value="aussi_ailleurs"> Oui, mais j’y vais aussi ailleurs [cite: 16]</label>
-            [cite_start]<label><input type="radio" name="fidelite" value="varie"> Non, je varie souvent [cite: 16]</label>
+            <label><input type="radio" name="fidelite" value="exclusivement" required> Oui, exclusivement</label>
+            <label><input type="radio" name="fidelite" value="aussi_ailleurs"> Oui, mais j’y vais aussi ailleurs</label>
+            <label><input type="radio" name="fidelite" value="varie"> Non, je varie souvent</label>
 
             <h4>Pensez-vous que McDonald’s propose une offre adaptée aux attentes actuelles (qualité, diversité, prix) ?</h4>
-            [cite_start]<label><input type="radio" name="offre_adaptee" value="tout_a_fait" required> Oui tout à fait [cite: 17]</label>
-            [cite_start]<label><input type="radio" name="offre_adaptee" value="plutot_oui"> Plutôt oui [cite: 17]</label>
-            [cite_start]<label><input type="radio" name="offre_adaptee" value="plutot_non"> Plutôt non [cite: 17]</label>
-            [cite_start]<label><input type="radio" name="offre_adaptee" value="pas_du_tout"> Pas du tout [cite: 17]</label>
+            <label><input type="radio" name="offre_adaptee" value="tout_a_fait" required> Oui tout à fait</label>
+            <label><input type="radio" name="offre_adaptee" value="plutot_oui"> Plutôt oui</label>
+            <label><input type="radio" name="offre_adaptee" value="plutot_non"> Plutôt non</label>
+            <label><input type="radio" name="offre_adaptee" value="pas_du_tout"> Pas du tout</label>
         </div>
         
         <div class="question-group">
-            <h3>Partie 4 – Collaboration Willy Wonka</h3>
+            <h3>Partie 4 – Comparaison des Concepts Chocolat</h3>
+            
+            <h4>Préférez-vous l'image 1 (McDo X Wonka) ou l'image 2 (Craq'n'Mac) ?</h4>
+            
+            <div class="image-comparison-container">
+                <div class="image-option">
+                    <label class="image-choice-label">
+                        <input type="radio" name="image_preference" value="image_1" required>
+                        <img src="Gemini_Generated_Image_iecmgriecmgriecm.jpg" alt="Affiche McDo X Willy Wonka" title="Image 1 : McDo X Wonka">
+                        Image 1
+                    </label>
+                </div>
+                <div class="image-option">
+                    <label class="image-choice-label">
+                        <input type="radio" name="image_preference" value="image_2">
+                        <img src="affiche 1 McDo.jpg" alt="Affiche Craq'n'Mac" title="Image 2 : Craq'n'Mac">
+                        Image 2
+                    </label>
+                </div>
+            </div>
 
             <h4>Seriez-vous prêt à acheter le produit **McDo X Willy Wonka** ?</h4>
             <label>
-                [cite_start]<input type="radio" name="achat_wonka" value="oui_wonka" required> Oui [cite: 20]
+                <input type="radio" name="achat_wonka" value="oui_wonka" required> Oui
             </label>
             <label>
-                [cite_start]<input type="radio" name="achat_wonka" value="non_wonka"> Non [cite: 21]
+                <input type="radio" name="achat_wonka" value="non_wonka"> Non
             </label>
 
             <h4>Seriez-vous prêt à acheter le produit **McDo seul** ?</h4>
             <label>
-                [cite_start]<input type="radio" name="achat_seul" value="oui_seul" required> Oui [cite: 23]
+                <input type="radio" name="achat_seul" value="oui_seul" required> Oui
             </label>
             <label>
-                [cite_start]<input type="radio" name="achat_seul" value="non_seul"> Non [cite: 24]
+                <input type="radio" name="achat_seul" value="non_seul"> Non
             </label>
 
             <h4>À quel prix seriez-vous prêt à acheter ce produit (supposé inclus dans un menu) ?</h4>
-            [cite_start]<label><input type="radio" name="price" value="menu_plus_2" required> Prix du menu + 2 € [cite: 26]</label>
-            [cite_start]<label><input type="radio" name="price" value="menu_plus_3"> Prix du menu + 3 € [cite: 27]</label>
-            [cite_start]<label><input type="radio" name="price" value="menu_plus_4"> Prix du menu + 4 € [cite: 28]</label>
+            <label><input type="radio" name="price" value="menu_plus_2" required> Prix du menu + 2 €</label>
+            <label><input type="radio" name="price" value="menu_plus_3"> Prix du menu + 3 €</label>
+            <label><input type="radio" name="price" value="menu_plus_4"> Prix du menu + 4 €</label>
 
         </div>
 
@@ -392,6 +420,7 @@
 
     <div id="results">
         <h2>✅ Vos Réponses (Simulation)</h2>
+        <p><strong>Préférence Image :</strong> <span id="res_image_pref"></span></p>
         <p><strong>Âge :</strong> <span id="res_age"></span></p>
         <p><strong>Dépense moyenne :</strong> <span id="res_depense"></span></p>
         <p><strong>Achat Wonka :</strong> <span id="res_achat_wonka"></span></p>
@@ -420,6 +449,7 @@
         };
 
         // Récupération des valeurs
+        const image_preference = getRadioValue('image_preference'); // Nouvelle valeur à récupérer
         const age = getRadioValue('age');
         const situation = getRadioValue('situation');
         const zone = getRadioValue('zone');
@@ -439,15 +469,15 @@
         // Récupération des motivations (checkboxes)
         const motivations = Array.from(form.querySelectorAll('input[name="motivation"]:checked')).map(cb => cb.value);
 
-        // Validation simple
-        if (!age || !frequence || !achat_wonka || !achat_seul || !price) {
+        // Validation simple (ajustée pour la nouvelle question image)
+        if (!image_preference || !age || !frequence || !achat_wonka || !achat_seul || !price) {
             alert("Veuillez répondre à toutes les questions principales pour continuer.");
             return;
         }
 
         // --- SIMULATION DE L'ENVOI DES DONNÉES ---
-        // Dans une application réelle, TOUTES les données ci-dessous seraient envoyées au service (Formspree, etc.)
         const data = {
+            image_preference: image_preference, // Donnée à envoyer
             age: age,
             situation: situation,
             zone: zone,
@@ -464,7 +494,6 @@
             achat_wonka: achat_wonka,
             achat_seul: achat_seul,
             price: price,
-            // Ajoutez ici les valeurs des champs "Autre" si vous souhaitez les récupérer spécifiquement:
             situation_autre: form.elements['situation_autre'].value,
             moment_autre: form.elements['moment_autre'].value,
             motivation_autre: form.elements['motivation_autre'].value
@@ -474,6 +503,7 @@
 
 
         // --- AFFICHAGE DES RÉSULTATS (Simulation) ---
+        document.getElementById('res_image_pref').innerText = image_preference === 'image_1' ? 'Image 1 (Wonka)' : 'Image 2 (Craq\'n\'Mac)'; // Affichage de la nouvelle donnée
         document.getElementById('res_age').innerText = age;
         document.getElementById('res_depense').innerText = depense + ' €';
         document.getElementById('res_achat_wonka').innerText = achat_wonka === 'oui_wonka' ? 'Oui' : 'Non';
