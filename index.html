@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sondage Marketing - McDo Chocolat</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
     <style>
         /*
         ==================================================
-        CSS (STYLE MODERNE - VERT SAPIN)
+        CSS (STYLE MODERNISÉ - Vert Sapin)
         ==================================================
         */
         :root {
             --sapin-green: #004d40; /* Vert Sapin / Forêt Profond */
-            --light-green: #e0f2f1; /* Vert très clair pour les fonds de section */
-            --accent-yellow: #ffc72c; /* Jaune McDo pour l'accentuation */
-            --mcdo-red: #c00;
-            --text-color-dark: #263238; /* Gris très foncé pour le texte */
-            --text-color-light: #ffffff;
-            --shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            --light-cream: #f9f9f9; /* Crème très clair pour le fond des cartes */
+            --accent-gold: #ffc72c; /* Jaune/Or (Rappel McDo) */
+            --accent-red: #c00; /* Rouge (Rappel McDo) */
+            --text-dark: #333;
+            --text-light: #555;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', sans-serif; /* Police moderne */
             background-color: var(--sapin-green); /* Fond Vert Sapin */
-            color: var(--text-color-dark);
+            color: var(--text-dark);
             margin: 0;
             padding: 30px;
             display: flex;
@@ -34,13 +35,13 @@
         }
 
         .container {
-            background-color: var(--text-color-light);
+            background-color: var(--light-cream);
             padding: 50px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
+            border-radius: 15px; /* Coins plus arrondis */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Ombre douce et profonde */
             max-width: 750px;
             width: 100%;
-            border: 2px solid var(--accent-yellow); /* Bordure jaune McDo */
+            border-top: 8px solid var(--accent-gold); /* Bande accent Or */
         }
 
         header {
@@ -49,69 +50,67 @@
         }
 
         header h1 {
-            color: var(--mcdo-red); /* Rouge McDo pour le titre principal */
+            color: var(--accent-red); /* Titre en Rouge McDo */
             font-size: 2.8em;
             font-weight: 700;
             margin-bottom: 10px;
         }
 
         header p {
-            font-size: 1.1em;
-            color: #607d8b;
+            color: var(--text-light);
+            font-size: 1.2em;
+            font-weight: 300;
         }
 
-        /* Groupes de questions */
+        /* Style des groupes de questions (cartes) */
         .question-group {
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             padding: 25px;
+            border: none;
             border-radius: 10px;
-            background-color: var(--light-green); /* Fond clair pour le contraste */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .question-group:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            background-color: var(--bg-white); /* Blanc pur */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Petite ombre pour l'effet carte */
         }
 
         .question-group h3 {
             margin-top: 0;
-            color: var(--sapin-green);
+            color: var(--sapin-green); /* Titre de question en Vert Sapin */
             font-size: 1.4em;
-            font-weight: 600;
-            border-bottom: 2px solid var(--accent-yellow);
-            padding-bottom: 10px;
+            font-weight: 500;
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 10px;
             margin-bottom: 20px;
         }
 
-        /* Style des options radio et labels */
+        /* Styles des options (pour les rendre plus cliquables) */
         label {
             display: flex;
             align-items: center;
             margin: 15px 0;
             padding: 12px;
             border-radius: 8px;
+            transition: background-color 0.2s, box-shadow 0.2s;
             cursor: pointer;
-            transition: background-color 0.2s;
-            border: 1px solid transparent;
+            border: 1px solid #eee;
         }
 
         label:hover {
-            background-color: #f0f4f7;
-            border: 1px solid #cfd8dc;
+            background-color: #fff3cc; /* Jaune clair au survol */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
+
+        /* Styles des boutons radio modernes */
         input[type="radio"] {
-            /* Styles d'input moderne */
             appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--sapin-green);
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--accent-gold);
             border-radius: 50%;
             margin-right: 15px;
             display: grid;
             place-content: center;
-            transition: all 0.2s ease;
+            cursor: pointer;
+            transition: border-color 0.2s;
         }
 
         input[type="radio"]::before {
@@ -121,28 +120,47 @@
             border-radius: 50%;
             transform: scale(0);
             transition: 120ms transform ease-in-out;
-            box-shadow: inset 1em 1em var(--mcdo-red);
+            box-shadow: inset 1em 1em var(--accent-red);
         }
 
+        input[type="radio"]:checked {
+            border-color: var(--accent-red);
+        }
+        
         input[type="radio"]:checked::before {
             transform: scale(1);
         }
-
-        /* Champs de saisie (nombre/texte) */
-        input[type="number"] {
+        
+        /* Styles des champs de texte/nombre */
+        input[type="number"], input[type="text"] {
             padding: 12px;
-            border: 1px solid #b0bec5;
+            border: 1px solid #ccc;
             border-radius: 6px;
             width: 90%;
             margin-top: 10px;
             font-size: 1em;
-            transition: border-color 0.3s;
+            transition: border-color 0.2s;
+        }
+        
+        input[type="number"]:focus, input[type="text"]:focus {
+            border-color: var(--accent-gold);
+            outline: none;
         }
 
-        input[type="number"]:focus {
-            border-color: var(--accent-yellow);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(255, 199, 44, 0.4);
+
+        /* Style du Range Slider */
+        input[type="range"] {
+            width: 100%;
+            margin-top: 15px;
+            /* Le reste du style de range est complexe et souvent laissé au navigateur pour la compatibilité */
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
         /* Bouton de soumission */
@@ -150,33 +168,176 @@
             display: block;
             width: 100%;
             padding: 18px;
-            background-color: var(--mcdo-red);
+            background-color: var(--accent-red);
             color: white;
             border: none;
             border-radius: 10px;
             font-size: 1.3em;
             font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.1s;
+            transition: background-color 0.3s, transform 0.2s;
             margin-top: 30px;
+            letter-spacing: 1px;
         }
 
         button:hover {
             background-color: #a00;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Range slider */
-        input[type="range"] {
-            width: 100%;
-            margin-top: 15px;
+        /* Style pour les résultats (Post-soumission) */
+        #results {
+            margin-top: 40px;
+            padding: 30px;
+            border: 2px solid var(--sapin-green);
+            background-color: #e8f5e9; /* Vert très clair */
+            border-radius: 10px;
+            display: none;
+            text-align: left;
         }
 
-        .range-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 5px;
-            font-size: 0.9em;
-            color: #666;
-            font-weight: 4
+        #results h2 {
+            color: var(--sapin-green);
+            text-align: center;
+        }
+        
+        #results p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            padding-left: 10px;
+            border-left: 3px solid var(--accent-gold);
+        }
+        
+        .note {
+            font-style: italic;
+            font-size: 0.8em;
+            color: #999;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Sondage Marketing : Le Chocolat McDo</h1>
+        <p>Aidez-nous à choisir la meilleure stratégie pour le lancement de notre tablette de chocolat.</p>
+    </header>
+
+    <form id="marketingSurvey">
+        
+        <div class="question-group">
+            <h3>1. Quel concept vous attire le plus ?</h3>
+            <label>
+                <input type="radio" name="concept_preference" value="McDo_Wonka" required>
+                Tablette de chocolat en **partenariat McDo X Willy Wonka** (Édition Limitée, Magie, Rêve)
+            </label>
+            <label>
+                <input type="radio" name="concept_preference" value="McDo_Seul">
+                Tablette de chocolat de la **marque McDo seule** (Goût iconique, Familial, Classique)
+            </label>
+        </div>
+
+        <div class="question-group">
+            <h3>2. Si c'était la tablette McDo X Willy Wonka, quelle est votre intention d'achat ? (1 = Pas du tout, 5 = Certainement)</h3>
+            <input type="range" id="intent_wonka" name="intent_wonka" min="1" max="5" value="3" oninput="document.getElementById('value_wonka').innerText=this.value">
+            <div class="range-labels">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+            <p>Score sélectionné : <strong id="value_wonka">3</strong></p>
+        </div>
+
+        <div class="question-group">
+            <h3>3. Si c'était la tablette McDo seule, quelle est votre intention d'achat ? (1 = Pas du tout, 5 = Certainement)</h3>
+            <input type="range" id="intent_seul" name="intent_seul" min="1" max="5" value="3" oninput="document.getElementById('value_seul').innerText=this.value">
+            <div class="range-labels">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+            <p>Score sélectionné : <strong id="value_seul">3</strong></p>
+        </div>
+
+        <div class="question-group">
+            <h3>4. Quel prix vous semblerait juste pour une tablette de chocolat McDo de qualité standard ? (en €)</h3>
+            <label>Prix idéal (€) : 
+                <input type="number" name="price" placeholder="Ex: 2.50" step="0.01" min="1" required>
+            </label>
+        </div>
+
+        <button type="submit">Valider mes réponses</button>
+    </form>
+
+    <div id="results">
+        <h2>✅ Vos Réponses (Simulation)</h2>
+        <p><strong>Concept Préféré :</strong> <span id="res_concept"></span></p>
+        <p><strong>Intention Wonka :</strong> <span id="res_wonka"></span> / 5</p>
+        <p><strong>Intention Seule :</strong> <span id="res_seul"></span> / 5</p>
+        <p><strong>Prix Suggéré :</strong> <span id="res_price"></span> €</p>
+        <p class="note">**NOTE IMPORTANTE :** Dans une campagne réelle, ces données seraient envoyées à une base de données (via un service backend) et non affichées ici.</p>
+    </div>
+
+</div>
+
+<script>
+    /*
+    ==================================================
+    JAVASCRIPT (LOGIQUE)
+    ==================================================
+    */
+    document.getElementById('marketingSurvey').addEventListener('submit', function(event) {
+        // Empêche le rechargement de la page par défaut du formulaire
+        event.preventDefault();
+
+        // Récupération des valeurs du formulaire
+        const form = event.target;
+        const concept = form.querySelector('input[name="concept_preference"]:checked');
+        const intentWonka = form.elements['intent_wonka'].value;
+        const intentSeul = form.elements['intent_seul'].value;
+        const price = form.elements['price'].value;
+
+        // Validation simple
+        if (!concept) {
+            alert("Veuillez choisir un concept préféré pour continuer.");
+            return;
+        }
+
+        // --- SIMULATION DE L'ENVOI DES DONNÉES ---
+        // Dans une application réelle, vous utiliseriez l'API fetch() pour envoyer ces données 
+        // à un serveur (ex: PHP, Python, Node.js) qui les enregistrerait dans une base de données.
+        
+        const data = {
+            concept: concept.value,
+            intent_wonka: intentWonka,
+            intent_seul: intentSeul,
+            price: price
+        };
+        
+        console.log("Données collectées (à envoyer) :", data);
+
+
+        // --- AFFICHAGE DES RÉSULTATS (À ENLEVER POUR LA CAMPAGNE FINALE) ---
+        // Cette partie sert juste à vous montrer que les données sont bien capturées.
+
+        document.getElementById('res_concept').innerText = (concept.value === 'McDo_Wonka' ? 'McDo X Willy Wonka' : 'McDo Seul');
+        document.getElementById('res_wonka').innerText = intentWonka;
+        document.getElementById('res_seul').innerText = intentSeul;
+        document.getElementById('res_price').innerText = price;
+        
+        document.getElementById('marketingSurvey').style.display = 'none'; // Cache le formulaire
+        document.getElementById('results').style.display = 'block'; // Affiche la zone de résultats
+        
+        alert("Merci pour votre participation !");
+    });
+</script>
+
+</body>
+</html>
